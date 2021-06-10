@@ -180,10 +180,12 @@ var monitorSchema = map[string]*schema.Schema{
 		// TODO: ValidateDiagFunc: validation.StringInSlice
 	},
 	"request_timeout": {
-		Description: "How long to wait before timing out the request? In seconds.",
+		Description: "How long to wait before timing out the request? In milliseconds." +
+			" Valid values are 5000, 3000, 2000, 1000 and 500.",
 		Type:        schema.TypeInt,
 		Optional:    true,
-		Default:     30,
+		Default:     5000,
+		// TODO: ValidateDiagFunc: validation.IntInSlice
 	},
 	"request_body": {
 		Description: "Request body for POST, PUT, PATCH requests.",
