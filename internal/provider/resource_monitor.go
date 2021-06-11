@@ -131,6 +131,9 @@ var monitorSchema = map[string]*schema.Schema{
 			Type: schema.TypeString,
 		},
 		Optional: true,
+		DiffSuppressFunc: func(k, old, new []string, d *schema.ResourceData) bool {
+			return len(old) == 0 || reflect.DeepEqual(old, new)
+		},
 		// TODO: ValidateDiagFunc
 	},
 	"monitor_group_id": {
